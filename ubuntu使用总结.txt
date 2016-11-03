@@ -1,0 +1,105 @@
+1.如何下载安装Atom
+sudo add-apt-repository ppa:webupd8team/atom
+sudo apt-get update
+sudo apt-get install atom
+
+2.如何创建无线网络热点给安卓手机
+http://blog.csdn.net/change0309/article/details/51627343
+
+3.如何安装dbe程序
+ubuntu16.04的软件中心应该是有bug，安装不了第三方.deb文件，
+我们只有使用dpkg -i 或者gdebi的方式安装，我使用的是后者，因为后者功能更加强大。
+要使用gdebi命令先要安装它：sudo apt install gdebi-core
+sudo gdebi ×××.deb
+
+还有另外一种安装方式  可以直接双击鼠标，直接用软件中心可以安装。
+但是Ubuntu16.04 更新软件中心之后bug。你可以右击鼠标，然后用以前的软件中心打开，
+然后在安装，安装过程中会让你输入密码。
+
+4.安装utorrent（找了好久 才找到一个合适的教程）
+http://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/install-utorrent-on-ubuntu-16-04.html
+
+5.ubuntu配置环境变量的小结
+你可以选择编辑 /etx/profile 文件或者 ~/.bashrc
+
+/etc/profile：此文件为系统的每个用户设置环境信息，当用户第一次登录时，该文件被执行。
+并从/etc/profile.d目录的配置文件中搜集shell的设置。相当于windows系统的环境变量
+
+~/.bashrc：该文件包含专用于你的bash shell的bash信息,
+当登录时以及每次打开新的shell时，文件被读取。相当于windows系统的用户环境变量。
+
+例如配置JDK设置环境变量
+打开文件，需要用sudo打开，要不然没有权限进行修改
+sudo vim /etc/profile
+在文件的末尾增加
+export JAVA_HOME = /usr/lib/jvm/jdk1.8_0  #这个是你JDK解压的路径
+export JAVA_JRE = $JAVA_HOME/jre/bin  #这个是你的运行时变量
+export CLASSPATH = .:$CLASSPATH:$JAVA_HOME/lib
+## 注意：有多个变量时用：隔开 变量用美元符号$开头
+
+6.删除整个目录的命令
+sudo rm -rf 文件名  #使用该命令一定要特别小心
+
+7.ubuutu16 安装搭建LAMP环境
+来源：http://www.linuxdiyf.com/linux/21265.html
+http://www.linuxidc.com/Linux/2016-01/127180.htm
+- 安装apache sudo apt-get install apache2
+打开浏览器，输入localhost 看一下有没有安装成功
+
+- 安装PHP7 sudo apt-get install php7.0
+输入终端输入 php7.0 看一下有没有安装成功
+
+- 安装MySQL sudo apt-get install mysql-server
+过程中会让你设置root 的密码以及确认密码
+
+- 把php与MySQL整个 sudo apt-get install php7.0-mysql
+
+最后重启mysql 和 Apache2服务
+sudo service mysql restart
+sudo service apaache restart
+
+8.ubuntu 安装starUML
+来源：http://www.cnblogs.com/mignet/p/StarUML_libgcrypt11.html
+1 安装libgcrypt11
+https://pan.baidu.com/s/1i3wb6M5
+用谷歌浏览器打开，会提示你是一个不安全的链接，不用管它，继续访问，然后下载就可以了。
+2 安装starUML
+去官网下载http://staruml.io/download
+之后安装就可以了。
+
+9. 启动utorrent 的命令
+utserver -settingspath /opt/utorrent-server-alpha-v3_3/ &
+
+直接在目录在打开./utserver
+
+10. 百度云盘的安装
+http://jingyan.baidu.com/article/4dc40848b761cbc8d846f172.html
+
+11. 如何显示./home目录下隐藏的文件
+快捷键 ctrl+H
+
+12. ubuntu打开任务管理起
+gnome-system-monitor
+
+13. 在安装Tomcat的时候出现 selected directory is not a valid files.
+主要原因是你当前的用户没有那个文件的权限，不能够使用，所以这个时候你要修改那个文件的权限。
+你可以进入那个目录下，然后执行命令 sudo chmod -R 777 目录名
+然后就可以了（-R表示的是递归的意思，执行的时候一定要非常小心，笔者就可以了一下的错误）
+
+14. 修改文件权限的小插曲
+今天本来想修改一下/usr 的权限，哪知道sudo在/usr/bin/文件夹下，我输入命令： chmod 777 * -R
+想修改权限结果导致sudo不能用了，各种郁闷呀，后来网上查阅说要到recovery mode下去修改权限：
+
+chown root:root /usr/bin/sudo
+
+chmod 4755 /usr/bom/sudo
+
+重启后还是提示有问题：
+
+sudo：在加载插件“sudoers_policy”时在 /etc/sudo.conf 第 0 行出错
+sudo：/usr/lib/sudo/sudoers.so 必须只对其所有者可写
+sudo：致命错误，无法加载插件
+
+后来实在没辙了，我直接apt-get remove sudo, apt-get install sudo这样重新安装了一下，终于又可以用了。ok
+
+在这次的小插曲中我还发现了su 和sudo是又区别的，虽然我的sudo不能用了，我还是可以用 su root 进入root用户的。
