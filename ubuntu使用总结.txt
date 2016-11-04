@@ -11,6 +11,7 @@ ubuntu16.04的软件中心应该是有bug，安装不了第三方.deb文件，
 我们只有使用dpkg -i 或者gdebi的方式安装，我使用的是后者，因为后者功能更加强大。
 要使用gdebi命令先要安装它：sudo apt install gdebi-core
 sudo gdebi ×××.deb
+在安装搜狗输入法之前，注意先保证存在fcitx ，ibssh2-1软件包，否则安装会出错
 
 还有另外一种安装方式  可以直接双击鼠标，直接用软件中心可以安装。
 但是Ubuntu16.04 更新软件中心之后bug。你可以右击鼠标，然后用以前的软件中心打开，
@@ -74,7 +75,7 @@ utserver -settingspath /opt/utorrent-server-alpha-v3_3/ &
 
 10. 百度云盘的安装
 http://jingyan.baidu.com/article/4dc40848b761cbc8d846f172.html
-
+其实可以不用安装，直接使用网页版就可以了
 11. 如何显示./home目录下隐藏的文件
 快捷键 ctrl+H
 
@@ -103,3 +104,6 @@ sudo：致命错误，无法加载插件
 后来实在没辙了，我直接apt-get remove sudo, apt-get install sudo这样重新安装了一下，终于又可以用了。ok
 
 在这次的小插曲中我还发现了su 和sudo是又区别的，虽然我的sudo不能用了，我还是可以用 su root 进入root用户的。
+（注意：一定不要使用chmod 777 -R /usr 这搞崩溃你的系统的，我已经重装了）
+15.重新安装旧版的软件中心
+sudo apt-get install software-center
