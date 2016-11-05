@@ -104,7 +104,7 @@ http://www.cnblogs.com/haoyijing/p/5810079.html
 #### 13.命令不档案补全功能: ([tab] 挄键的好处)
 tab键 这是是我最喜欢的一个键了。
 
-#### 14.系统本分与还原
+#### 14.系统备份与还原
 经过上次把系统给搞崩溃的经历，我现在迫不及待想备份一份系统
 http://www.linuxidc.com/Linux/2015-12/126216.htm
 tar -vczf /backup.tar.gz --exclude=/proc --exclude=/sys --exclude=/backup.tar.gz /
