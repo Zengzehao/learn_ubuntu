@@ -16,3 +16,5 @@ nano
 
 6.正确关机的命令
 shutdown 或者 poweroff
+
+7.
