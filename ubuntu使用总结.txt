@@ -107,3 +107,13 @@ sudo：致命错误，无法加载插件
 （注意：一定不要使用chmod 777 -R /usr 这搞崩溃你的系统的，我已经重装了）
 15.重新安装旧版的软件中心
 sudo apt-get install software-center
+
+16.本地ubuntu访问远程ubuntu
+sudo apt-get  install openssh-server
+ssh -q -l [云服务器登录账号] -p 22 [云服务器的公网IP]
+
+ssh 账号名@云服务器的公网IP
+ssh ubuntu@119.29.184.145
+
+上传本地文件到服务器 scp 本地文件路径 账号名@云服务器的公网IP：云服务器路径
+从服务器下载文件到本地 scp 账号名@云服务器的公网IP：云服务器路径 本地文件路径 
